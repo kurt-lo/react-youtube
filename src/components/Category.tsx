@@ -48,7 +48,7 @@ export default function Category({ handleCategoryClick }: { handleCategoryClick:
           <SwiperSlide
             key={category.name}
             onClick={() => handleCategoryClick(category.query)}
-            className="bg-slate-500 py-2 rounded-lg cursor-pointer"
+            className="bg-slate-500 py-2 rounded-lg cursor-pointer hover:opacity-70"
           >
             {category.name}
           </SwiperSlide>
