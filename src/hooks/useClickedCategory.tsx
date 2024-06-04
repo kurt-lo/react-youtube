@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { getApi } from "../config";
 
-export default function useClickedCategory<T>(setClickedCategory: React.Dispatch<React.SetStateAction<T[]>>) {
+export default function useClickedCategory() {
+
+    const [clickedCategory, setClickedCategory] = useState<any[]>([]);
 
     const handleCategoryClick = async (query: string) => {
         try {
@@ -13,5 +16,6 @@ export default function useClickedCategory<T>(setClickedCategory: React.Dispatch
 
     return {
         handleCategoryClick,
+        clickedCategory
     }
 }

@@ -4,16 +4,13 @@ import VideosContainer from "./VideosContainer";
 import useFetchSuggestedVideo from "../hooks/useFetchSuggestedVideo";
 import useSearch from "../hooks/useSearch";
 import useClickedCategory from "../hooks/useClickedCategory";
-import { useState } from "react";
 
 export default function Layout() {
 
   const { videos } = useFetchSuggestedVideo();
   const { searchResults, handleSearch } = useSearch();
 
-  const [clickedCategory, setClickedCategory] = useState<any[]>([]);
-
-  const { handleCategoryClick } = useClickedCategory(setClickedCategory);
+  const { handleCategoryClick, clickedCategory } = useClickedCategory();
 
   let videoThatWillRender;
 
@@ -30,7 +27,7 @@ export default function Layout() {
       {/* it needs to be props drilling para masama yung value na parameters which is yung result */}
       <Navbar handleSearch={handleSearch} />
       <Category handleCategoryClick={handleCategoryClick} />
-      {/* render the suggested video if theres no item when use search a video */}
+      {/* render the suggested video if theres no item when use search a video or clicked category */}
       <VideosContainer
         videos={videoThatWillRender}
       />

@@ -1,18 +1,59 @@
 import { categories } from "../utils/categoryList";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
 
-export default function Category({ handleCategoryClick }: {handleCategoryClick: (query: string) => void }) {
+// Import Swiper styles
+import "swiper/css";
+
+export default function Category({ handleCategoryClick }: { handleCategoryClick: (query: string) => void }) {
 
   return (
-    <ul className="flex justify-center gap-2 pt-4">
-      {categories.map((category) => (
-        <li
-          key={category.name}
-          onClick={() => handleCategoryClick(category.query)}
-          className="bg-slate-500 px-4 py-2 rounded-3xl cursor-pointer"
-        >
-          {category.name}
-        </li>
-      ))}
-    </ul>
+    <>
+      <Swiper watchSlidesProgress={true} className="mySwiper text-center mx-4 md:mx-8"
+        slidesPerView={8}
+        breakpoints={{
+          // when window width is >= 320px
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          // when window width is >= 480px
+          480: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          // when window width is >= 640px
+          640: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+          // when window width is >= 768px
+          768: {
+            slidesPerView: 5,
+            spaceBetween: 10,
+          },
+          // when window width is >= 1024px
+          1024: {
+            slidesPerView: 6,
+            spaceBetween: 10,
+          },
+          // when window width is >= 1280px
+          1280: {
+            slidesPerView: 8,
+            spaceBetween: 10,
+          },
+        }}
+      >
+        {categories.map((category) => (
+          <SwiperSlide
+            key={category.name}
+            onClick={() => handleCategoryClick(category.query)}
+            className="bg-slate-500 py-2 rounded-lg cursor-pointer"
+          >
+            {category.name}
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </>
   )
 }

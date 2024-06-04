@@ -34,7 +34,7 @@ export default function SearchBar({ handleSearch }: Search) {
                     ref={searchRef}
                     type="text"
                     placeholder="Search"
-                    className="py-[.5rem] px-[1rem] w-[30rem] rounded-3xl"
+                    className="py-[.5rem] px-[1rem] md:w-[30rem] rounded-3xl"
                 />
                 <IoSearch
                     onClick={searchFunc}
